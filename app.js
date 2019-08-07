@@ -13,6 +13,11 @@ require('dotenv/config');
 //     res.send("We're on posts");
 // })
 
+// Import Routes
+const postsRoute = require('./routes/posts'); // importing the route from the posts.js file in routes folder
+
+app.use('/posts', postsRoute); // any route that comes after /posts is no longer needed to write /posts/route_name
+
 // Routes
 
 // get, post, delete, patch are methods
@@ -21,9 +26,10 @@ app.get('/', (req, res) => {
     res.send("We are on home"); 
 });
 
-app.get('/posts', (req, res) => {
-    res.send("We're on posts");
-});
+// no longer needed due to the postsRoutes
+// app.get('/posts', (req, res) => {
+//     res.send("We're on posts");
+// });
 
 
 // Connect to DB
