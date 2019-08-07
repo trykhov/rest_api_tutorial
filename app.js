@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv/config');
 // Have ability to create routes in simple way
 
 // Middlewares
-
+app.use(cors());
+app.use(bodyParser.json()); // reads and parses req.body info
 
 // app.use('/posts', (req, res) => {
 //     // every time posts is called / visited, this logic runs
@@ -15,7 +18,7 @@ require('dotenv/config');
 
 // Import Routes
 const postsRoute = require('./routes/posts'); // importing the route from the posts.js file in routes folder
-
+//  this is a middleware
 app.use('/posts', postsRoute); // any route that comes after /posts is no longer needed to write /posts/route_name
 
 // Routes
